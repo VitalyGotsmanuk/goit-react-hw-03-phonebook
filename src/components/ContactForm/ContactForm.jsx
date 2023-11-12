@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import css from './ContactForm.module.css';
 
-
 export class ContactForm extends Component { 
     
     handleSubmit = (event) => {
@@ -15,7 +14,6 @@ export class ContactForm extends Component {
         };
             
         this.props.handleAddContact(contact)
-        //console.log("Submit", contact)
     }
 
     render () {
