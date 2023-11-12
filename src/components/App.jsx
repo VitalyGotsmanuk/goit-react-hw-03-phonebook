@@ -37,9 +37,7 @@ export class App extends Component {
       this.setState({
         contacts: JSON.parse(stringDeletContacts)
       })    
-    } 
-     
-
+    }  
   } 
 
   componentWillUnmount() {
@@ -84,7 +82,6 @@ export class App extends Component {
     - Надсилаються мережеві запити (HTTP request)
     - Оновлюють(синхронізуються) дані зі стейту з локальним сховищем
 */
-  
 
   handleAddContact = (contact) => {
     const duplicate = this.state.contacts.some((contacts) => contacts.name === contact.name);
@@ -93,10 +90,7 @@ export class App extends Component {
       alert(`${contact.name} is already in contacts!`);
       return;
     }
-
     const finalContact = { ...contact, id: nanoid() }
-
-
 
     this.setState({
       contacts: [...this.state.contacts, finalContact]
@@ -114,9 +108,10 @@ export class App extends Component {
     );
   }
 
-  handleDeleteContact = contactId => {
+  handleDeleteContact = (id, name, number) => {
     this.setState({
-      contacts: this.state.contacts.filter(contact => contact.id !== contactId),
+      contacts: this.state.contacts.filter(contact => contact.id !== id),
+      deleteContact: [...this.state.deleteContact, { id, name, number }]
     });
   };
 
